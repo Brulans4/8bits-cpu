@@ -71,7 +71,7 @@ void loadProgram(CPU *cpu)
             printf("Program too big !\n");
             cpuFree(cpu);
             exit(EXIT_FAILURE);
-        }    
+        }
     }
     fclose(progFile);
 }
@@ -121,6 +121,10 @@ void executeInstruction(CPU *cpu, uint8_t opCode, uint8_t inedexRegWrite, uint8_
         break;
     case 1: // MOV
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegRead];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
@@ -135,47 +139,102 @@ void executeInstruction(CPU *cpu, uint8_t opCode, uint8_t inedexRegWrite, uint8_
         cpu->pc += 2;
         break;
     case 4: // INC
+        if (cpu->regs[inedexRegRead] == 255)
+        {
+            cpu->carryFlag = true;
+        }
+
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegRead] + 1;
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
     case 5: // ADD
+        if (cpu->regs[inedexRegRead] > 255 - cpu->regs[inedexRegWrite])
+        {
+            cpu->carryFlag = true;
+        }
+
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegWrite] + cpu->regs[inedexRegRead];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
     case 6: // ADDIV
+        if (cpu->regs[inedexRegRead] > 255 - cpu->regs[inedexRegWrite])
+        {
+            cpu->carryFlag = true;
+        }
+
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegWrite] + cpu->ram[cpu->pc + 1];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc += 2;
         break;
     case 7: // DEC
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegRead] - 1;
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
     case 8: // SUB
+        if (cpu->regs[inedexRegRead] > cpu->regs[inedexRegWrite])
+        {
+            cpu->carryFlag = true;
+        }
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegWrite] - cpu->regs[inedexRegRead];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
     case 9: // SUBIV
+        if (cpu->ram[cpu->pc + 1] > cpu->regs[inedexRegWrite])
+        {
+            cpu->carryFlag = true;
+        }
         cpu->regs[inedexRegWrite] = cpu->regs[inedexRegWrite] - cpu->ram[cpu->pc + 1];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc += 2;
         break;
     case 10: // OR
-        cpu->regs[inedexRegWrite] = cpu->regs[inedexRegRead] | cpu->regs[inedexRegWrite];
+        cpu->regs[inedexRegWrite] = cpu->regs[inedexRegWrite] | cpu->regs[inedexRegRead];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
     case 11: // AND
-        cpu->regs[inedexRegWrite] = cpu->regs[inedexRegRead] & cpu->regs[inedexRegWrite];
+        cpu->regs[inedexRegWrite] = cpu->regs[inedexRegWrite] & cpu->regs[inedexRegRead];
+        if (cpu->regs[inedexRegWrite] == 0)
+        {
+            cpu->zeroFlag = true;
+        }
 
         cpu->pc++;
         break;
     case 12: // CMP
-        cpu->carryFlag = cpu->regs[inedexRegRead] > cpu->regs[inedexRegWrite];
+        cpu->carryFlag = cpu->regs[inedexRegWrite] > cpu->regs[inedexRegRead];
 
         cpu->pc++;
         break;
