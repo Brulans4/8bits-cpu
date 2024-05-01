@@ -24,7 +24,7 @@ This project implements a simple 8-bit CPU emulator in C. The emulator is capabl
 
 **Instruction set**
 
-| OP CODE (4 bits) | Instruction | REG1 (2 bits) | REG2 (2 bits) | Immediate value (8 bits) | Total (8/16 bits) |  	  	   Operation                    | |--------|---------|-------------|---------------|---------------|--------------------------|-------------------|---------------|-------------------------------|
+| OP CODE| binary  | Instruction | REG1 (2 bits) | REG2 (2 bits) | Immediate value (8 bits) | Total (8/16 bits) | Operation 	| note	                        | |--------|---------|-------------|---------------|---------------|--------------------------|-------------------|---------------|-------------------------------|
 | 0      | 0000    | NOP         |               |               |			    | 8                 | NOP;          | 	         	        | 
 | 1	 | 0001	   | MOV	 | X		 | X		 |			    | 8			| MOV AL, BL;   | AL = BL	                | 
 | 2	 | 0010	   | STOR	 | X		 | 		 | X			    | 16		| STOR 15, AL;  | [15 + 192] = AL               | 
@@ -41,7 +41,6 @@ This project implements a simple 8-bit CPU emulator in C. The emulator is capabl
 | D	 | 1101	   | JMP	 | X		 | 		 | X			    | 16		| JMP 5		| PC = 5	                |
 | E	 | 1110	   | FLG	 | X		 |		 | X			    | 16		| FLG 5 	| if(fc == 1 OR fz == 0) PC = 5	|
 | F	 | 1111	   | RSTFG	 | X		 | 		 |			    | 8			| RSTF 		| fc = 0, fz =0	                |
-|--------|---------|-------------|---------------|---------------|--------------------------|-------------------|---------------|-------------------------------|
 
 ## Getting Started
 
