@@ -21,7 +21,7 @@ This project implements a simple 8-bit CPU emulator in C. The emulator is capabl
 | BL       | 10         | 
 | CL       | 11         |
 
-**Instruction set**
+**Instruction set**:
 
 | OP CODE | Binary | Instruction | REG1 (2 bits) | REG2 (2 bits) | Immediate value (8 bits) | Total (8/16 bits) | Operation | Note |
 |---------|--------|-------------|---------------|---------------|--------------------------|-------------------|-----------|------|
