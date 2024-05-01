@@ -54,6 +54,7 @@ void loadProgram(CPU *cpu)
     if (progFile == NULL)
     {
         printf("Error opening file!\n");
+        cpuFree(cpu);
         exit(EXIT_FAILURE);
     }
 
@@ -72,6 +73,7 @@ void loadProgram(CPU *cpu)
             exit(EXIT_FAILURE);
         }    
     }
+    fclose(progFile);
 }
 
 void executProgram(CPU *cpu)
