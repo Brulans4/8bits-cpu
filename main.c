@@ -26,5 +26,5 @@ int main(int argc, char *argv[])
     executProgram(cpu);
     printScreen(cpu);
 
-    free(cpu);
+    cpuFree(cpu);
 }
