@@ -197,7 +197,7 @@ int getOpcode(char *keyWord)
     {
         return 14;
     }
-    if (strcmp(keyWord, "RSTF") == 0)
+    if (strcmp(keyWord, "RSTFG") == 0)
     {
         return 15;
     }

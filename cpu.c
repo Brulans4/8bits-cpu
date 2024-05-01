@@ -192,7 +192,7 @@ void executeInstruction(CPU *cpu, uint8_t opCode, uint8_t inedexRegWrite, uint8_
             cpu->pc += 2;
         }
         break;
-    case 15: // RSTF
+    case 15: // RSTFG
         cpu->carryFlag = false;
         cpu->zeroFlag = false;
 
@@ -323,7 +323,7 @@ void printDecodedInstruction(CPU *cpu, uint8_t opCode, uint8_t *inedexRegWrite, 
         printf("opCode: FLG\n");
         break;
     case 15:
-        printf("opCode: RSTF\n");
+        printf("opCode: RSTFG\n");
         break;
     }
 
