@@ -20,7 +20,6 @@ This project implements a simple 8-bit CPU emulator in C. The emulator is capabl
 | AL       | 01         |
 | BL       | 10         | 
 | CL       | 11         |
-|----------|------------|
 
 **Instruction set**
 
