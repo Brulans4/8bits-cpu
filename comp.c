@@ -138,13 +138,11 @@ void compileProgram(char *pathProgram)
 
 int getOpcode(char *keyWord)
 {
-    OpCode opCode = NOP;
-
     for (int i = 0; i < 16; i++)
     {
         if (strcmp(keyWord, instructionSet[i]) == 0)
         {
-            return opCode + i;
+            return i;
         }
     }
     printf("Error: Invalid keyword\n");

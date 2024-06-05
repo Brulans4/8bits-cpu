@@ -5,44 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef enum
-{
-    NOP,
-    MOV,
-    STOR,
-    LOAD,
-    INC,
-    ADD,
-    ADDIV,
-    DEC,
-    SUB,
-    SUBIV,
-    OR,
-    AND,
-    CMP,
-    JMP,
-    FLG,
-    RSTF,
-} OpCode;
-
-const char* instructionSet[] = {
-    "NOP",
-    "MOV",
-    "STOR",
-    "LOAD",
-    "INC",
-    "ADD",
-    "ADDIV",
-    "DEC",
-    "SUB",
-    "SUBIV",
-    "OR",
-    "AND",
-    "CMP",
-    "JMP",
-    "FLG",
-    "RSTF",
-};
+extern const char *instructionSet[];
 
 /**
  * @brief Allocates memory and checks if the allocation was successful.

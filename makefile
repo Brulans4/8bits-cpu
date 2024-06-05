@@ -9,17 +9,17 @@ all: clean $(ALL)
 utils.o: utils.c utils.h
 	cc $(CFLAGS) -c -g utils.c
 
-cpu.o: cpu.c cpu.h
+cpu.o: cpu.c cpu.h utils.h
 	cc $(CFLAGS) -c -g cpu.c
 
-comp.o: comp.c comp.h
+comp.o: comp.c comp.h utils.h
 	cc $(CFLAGS) -c -g comp.c
 
-main.o: main.c cpu.h utils.h
+main.o: main.c cpu.h comp.h
 	cc $(CFLAGS) -c -g main.c 
 
 
-main: main.o cpu.o comp.o utils.o 
+main: main.o cpu.o comp.o utils.o
 	cc $(CFLAGS) -o main main.o cpu.o comp.o utils.o
 
 

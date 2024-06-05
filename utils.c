@@ -4,6 +4,25 @@
 
 #include "utils.h"
 
+const char *instructionSet[] = {
+    "NOP",
+    "MOV",
+    "STOR",
+    "LOAD",
+    "INC",
+    "ADD",
+    "ADDIV",
+    "DEC",
+    "SUB",
+    "SUBIV",
+    "OR",
+    "AND",
+    "CMP",
+    "JMP",
+    "FLG",
+    "RSTF",
+};
+
 void *smalloc(size_t size)
 {
   void *res = malloc(size);
