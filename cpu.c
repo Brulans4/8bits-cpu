@@ -333,58 +333,7 @@ void printCPU(CPU *cpu)
 
 void printDecodedInstruction(CPU *cpu, uint8_t opCode, uint8_t *inedexRegWrite, uint8_t *inedexRegRead)
 {
-    switch (opCode)
-    {
-    case 0:
-        printf("opCode: NOP\n");
-        break;
-
-    case 1:
-        printf("opCode: MOV\n");
-        break;
-    case 2:
-        printf("opCode: STOR\n");
-        break;
-    case 3:
-        printf("opCode: LOAD\n");
-        break;
-    case 4:
-        printf("opCode: INC\n");
-        break;
-    case 5:
-        printf("opCode: ADD\n");
-        break;
-    case 6:
-        printf("opCode: ADDIV\n");
-        break;
-    case 7:
-        printf("opCode: DEC\n");
-        break;
-    case 8:
-        printf("opCode: SUB\n");
-        break;
-    case 9:
-        printf("opCode: SUBIV\n");
-        break;
-    case 10:
-        printf("opCode: OR\n");
-        break;
-    case 11:
-        printf("opCode: AND\n");
-        break;
-    case 12:
-        printf("opCode: CMP\n");
-        break;
-    case 13:
-        printf("opCode: JMP\n");
-        break;
-    case 14:
-        printf("opCode: FLG\n");
-        break;
-    case 15:
-        printf("opCode: RSTFG\n");
-        break;
-    }
+    printf("opcode: %s\n", instructionSet[opCode]);
 
     if (*inedexRegWrite == 1)
     {

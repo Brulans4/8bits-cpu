@@ -2,6 +2,8 @@
 #define COMP_H
 
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * Compiles the given program and loads it into the CPU.

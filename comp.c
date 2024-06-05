@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "comp.h"
+#include "utils.h"
 
 void compileProgram(char *pathProgram)
 {
@@ -137,69 +138,14 @@ void compileProgram(char *pathProgram)
 
 int getOpcode(char *keyWord)
 {
-    if (strcmp(keyWord, "NOP") == 0)
+    OpCode opCode = NOP;
+
+    for (int i = 0; i < 16; i++)
     {
-        return 0;
-    }
-    if (strcmp(keyWord, "MOV") == 0)
-    {
-        return 1;
-    }
-    if (strcmp(keyWord, "STOR") == 0)
-    {
-        return 2;
-    }
-    if (strcmp(keyWord, "LOAD") == 0)
-    {
-        return 3;
-    }
-    if (strcmp(keyWord, "INC") == 0)
-    {
-        return 4;
-    }
-    if (strcmp(keyWord, "ADD") == 0)
-    {
-        return 5;
-    }
-    if (strcmp(keyWord, "ADDIV") == 0)
-    {
-        return 6;
-    }
-    if (strcmp(keyWord, "DEC") == 0)
-    {
-        return 7;
-    }
-    if (strcmp(keyWord, "SUB") == 0)
-    {
-        return 8;
-    }
-    if (strcmp(keyWord, "SUBIV") == 0)
-    {
-        return 9;
-    }
-    if (strcmp(keyWord, "OR") == 0)
-    {
-        return 10;
-    }
-    if (strcmp(keyWord, "AND") == 0)
-    {
-        return 11;
-    }
-    if (strcmp(keyWord, "CMP") == 0)
-    {
-        return 12;
-    }
-    if (strcmp(keyWord, "JMP") == 0)
-    {
-        return 13;
-    }
-    if (strcmp(keyWord, "FLG") == 0)
-    {
-        return 14;
-    }
-    if (strcmp(keyWord, "RSTFG") == 0)
-    {
-        return 15;
+        if (strcmp(keyWord, instructionSet[i]) == 0)
+        {
+            return opCode + i;
+        }
     }
     printf("Error: Invalid keyword\n");
     exit(EXIT_FAILURE);
