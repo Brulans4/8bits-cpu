@@ -55,6 +55,7 @@ void loadProgram(CPU *cpu)
     {
         printf("Error opening file!\n");
         cpuFree(cpu);
+        fclose(progFile);
         exit(EXIT_FAILURE);
     }
 
@@ -70,6 +71,7 @@ void loadProgram(CPU *cpu)
         {
             printf("Program too big !\n");
             cpuFree(cpu);
+            fclose(progFile);
             exit(EXIT_FAILURE);
         }
     }
