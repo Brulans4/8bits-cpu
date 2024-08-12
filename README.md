@@ -1,10 +1,6 @@
-Sure, here's a sample README for your project:
+# 8-bit CPU Emulator
 
----
-
-# Simple 8-bit CPU Emulator
-
-This project implements a simple 8-bit CPU emulator in C. The emulator is capable of compiling and executing programs written in a custom assembly-like language, as well as displaying output on a simulated screen.
+This project implements a 8-bit CPU emulator in C. The emulator is capable of compiling and executing programs written in a custom assembly-like language, as well as displaying output on a simulated screen.
 
 ## Features
 
