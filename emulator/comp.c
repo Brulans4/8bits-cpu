@@ -19,6 +19,7 @@ void compileProgram(char *pathProgram)
     if (binFile == NULL)
     {
         printf("Error opening file!\n");
+        fclose(progFile);
         exit(EXIT_FAILURE);
     }
 
