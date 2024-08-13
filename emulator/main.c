@@ -26,4 +26,5 @@ int main(int argc, char *argv[])
     printScreen(cpu);
 
     cpuFree(cpu);
+    exit(EXIT_SUCCESS);
 }
